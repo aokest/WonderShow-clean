@@ -1,24 +1,35 @@
 # WonderShow Community Edition
 
-WonderShow Community Edition is the free, practical build for creators, teachers, and developers. It focuses on a clear recording workflow: record a presentation window, presenter camera, and microphone on macOS, then produce a previewable and exportable project.
+WonderShow Community Edition is the free, practical build for creators, teachers, and developers. The 2.0 Community Edition provides a stable, offline, reproducible recording and light post-production workflow: record a presentation window, presenter camera, and microphone on macOS; save a `.wondershow` project; then finish basic camera editing, clip selection, and export after recording.
 
-## Feature Overview
+## Feature Scope
 
-- Camera input: supports the built-in Mac camera, common UVC cameras, and external capture devices.
-- Screen and window recording: record a presentation window, the full display, or manually selected windows.
-- Presenter picture-in-picture: supports screen main view with presenter PiP, presenter main view, side-by-side, screen-only, and speaker-only layouts.
-- Audio recording: follows the current macOS microphone input and writes a separate raw audio track.
-- Project-based workflow: creates a `.wondershow` project with raw tracks, program track, timeline, and export metadata.
-- Program preview and export: preview the composed result after recording, then export the final MP4.
-- Multilingual UI: Simplified Chinese, Traditional Chinese, and English are built in.
+Community Edition includes:
 
-## Use Cases
+- Camera input: built-in Mac cameras, common UVC cameras, and external capture devices.
+- Screen and window recording: presentation windows, full display capture, and manually selected windows.
+- Source switching during recording: `⌘1` to `⌘6` source slots.
+- Presenter PiP and core layouts: screen main, presenter PiP, presenter main, side-by-side, top/bottom, screen-only, and speaker-only.
+- Canvas ratios: landscape, portrait, and square, with recording-time layout/canvas changes replayed in preview and export.
+- Audio recording: current macOS microphone input written as a separate raw audio track.
+- Project workflow: `.wondershow` projects with raw tracks, program track, timeline, layout, and export metadata.
+- Program preview and export: preview after recording, export MP4/MOV/GIF, and manually export up to 4K.
+- Basic camera editing: rectangular/circular screen focus regions, automatic keyframes, standard masks, basic borders, undo/redo, single-clip export, and small merged clip exports.
+- Basic presenter adjustments: mirror, brightness, contrast, and lightweight smoothing.
+- Multilingual UI: Simplified Chinese, Traditional Chinese, and English.
 
-- Record courses, short lessons, knowledge sharing, product demos, and online talks.
-- Capture narrated Keynote, PowerPoint, WPS, PDF, or browser-based slide presentations.
-- Prepare presenter PiP material for video platforms, YouTube, and internal learning systems.
-- Check camera, microphone, screen-recording permissions, and layouts before a real lesson recording.
-- Let developers read the `.wondershow` project format and build project inspection, conversion, archive, or media-management tools.
+## Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `⌥⌘R` | Start / stop recording |
+| `⌘1` - `⌘6` | Switch source slots during recording |
+| `⌘Z` / `⇧⌘Z` | Undo / redo camera or clip edits |
+| `⌘←` / `⌘→` | Previous / next frame |
+| `⌘N` | Create a camera keyframe |
+| `Delete` | Delete the selected keyframe or clip |
+| `Return` | Play / pause camera preview |
+| `ESC` | Cancel the current camera selection and roll back newly created automatic keyframes |
 
 ## How To Use
 
@@ -28,24 +39,19 @@ WonderShow Community Edition is the free, practical build for creators, teachers
 4. Choose the recording source: presentation window, full display, or manually selected windows.
 5. Choose the recording mode and layout, such as “Camera + Screen” and “Screen Main + Speaker PiP”.
 6. Click “Start Recording”, then wait for program composition after stopping.
-7. Use “Preview Program” to check the result, then export the video or keep the project for later processing.
+7. Use “Preview Program” to check the result. For refinement, enter camera editing, adjust keyframes or clip ranges, then export the video.
 
-## Highlights
+## Open-Source Documentation And Code
 
-- Community Edition focuses on stable, usable, transparent recording, with only the controls needed for the core workflow.
-- Community Edition uses the independent bundle id `com.wondershow.community`, so macOS can manage its permissions separately.
-- The app package includes signed permission entitlements so macOS can request Camera, Microphone, and Screen Recording access correctly.
-- The recording path inherits the protected v1.0.0 baseline: direct active-window capture, source switching, complete-window display, preview/export parity, and HD export.
+The open-source repository includes:
 
-## Who The Open-Source Project Is For
-
-- Developers who want to understand the WonderShow project format, recording manifest, timeline, and export configuration.
-- Automation developers who want to build `.wondershow` inspectors, converters, batch processors, or media-management tools.
-- Teams that want to use the public project format for content archiving, course-material organization, or internal workflow integration.
-- Independent developers who want to study how a macOS recording product separates the app experience from an open data format.
-
-The open-source package does not include the full desktop app source, ScreenCaptureKit implementation, live monitor, video compositor, commercial UI, licensing system, or update system. Its purpose is to let the community build tools and integrations on the public project format while keeping a clear boundary around the desktop app itself.
+- WonderShow Core Swift Package.
+- Public `.wondershow` project schemas for manifests, timelines, layouts, and export settings.
+- MediaPipe sidecar local protocol and security constraints.
+- Plugin APIs, examples, and tests.
+- `README`, `LICENSE`, `NOTICE`, `CONTRIBUTING`, `SECURITY`, `ROADMAP`, and `PACKAGE_BOUNDARY`.
+- Trilingual Community Edition documentation: Simplified Chinese, Traditional Chinese, and English.
 
 ## Support The Author
 
-If WonderShow Community helps you, the About panel includes small QR codes for supporting me with a cola or a few tokens. Thank you for trying it and sending feedback.
+If WonderShow Community helps you, the About panel includes small QR codes for supporting me with a cola or a small boost. Thank you for trying it and sending feedback.

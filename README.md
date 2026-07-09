@@ -5,8 +5,8 @@
 **多机位演示录制助手 — 让演示更专业，让表达更出色**
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-macOS%2013+-lightgrey.svg)](https://github.com/aokest/WonderShow)
-[![Release](https://img.shields.io/badge/release-v1.0.11-green.svg)](https://github.com/aokest/WonderShow/releases/tag/v1.0.11)
+[![Platform](https://img.shields.io/badge/platform-macOS%2014+-lightgrey.svg)](https://github.com/aokest/WonderShow)
+[![Release](https://img.shields.io/badge/release-v2.0.0-green.svg)](https://github.com/aokest/WonderShow/releases/tag/v2.0.0)
 [![Swift](https://img.shields.io/badge/swift-5.9+-orange.svg)](https://swift.org)
 
 [English](README.en.md) | [繁體中文](README.zh-Hant.md) | **简体中文**
@@ -15,9 +15,19 @@
 
 ---
 
+<p align="center">
+  <img src="designs/wondershow20-release-poster.png" alt="WonderShow 2.0 Release Report" width="100%">
+</p>
+
+---
+
+
+
+---
+
 灵演（WonderShow）是一款 macOS 原生多机位演示录制工具。它让创作者、讲师和开发者能快速录制带讲者画中画的高清演示视频，支持多摄像头切换、实时布局调整和一键导出。**完全离线运行，不依赖任何网络环境。**
 
-> 💡 灵演最初是一个演讲辅助工具，后来发现培训和知识分享场景中，讲者画面、PPT 和声音的录制与合成需求非常强烈。于是 1.0 版本先做成了一个强大的录屏软件——演讲结束即生成成品，无需大量后期。
+> 💡 灵演最初是一个演讲辅助工具，后来发现培训和知识分享场景中，讲者画面、PPT 和声音的录制与合成需求非常强烈。2.0 版本在稳定录制主链路之上补齐了镜头编辑、时间轴片段选取、多段导出和可回滚的关键帧工作流，让录制结束后的精修也能在同一个项目里完成。
 
 [![项目演示视频](https://img.youtube.com/vi/JL7-oVyqE_s/0.jpg)](https://www.youtube.com/watch?v=JL7-oVyqE_s)
 
@@ -52,6 +62,18 @@
 
 三个轨道按时间轴同步，可直接拖入剪辑软件继续编辑。支持原始视频格式和 **4K 导出**。
 
+导出弹窗可用复选框明确选择导出内容：完整原始视频、完整镜头编辑视频、单个片段、多个片段合并成一个视频，或把多个片段分别导出为独立文件。完整视频选项和片段选项分组显示；建立时间轴选区后不会再强制只导出选区。
+
+### 🎯 高级预览与镜头编辑
+录制保存后可进入镜头编辑模式，在屏幕原始轨上绘制镜头选区并自动生成关键帧。支持矩形、圆形、四边形、三角形、心形、梅花形等镜头形状，环境遮罩、边框、转场用时和片段导出都可以在时间轴中调整。
+
+- 退出镜头编辑只离开编辑模式，不清除镜头设置；关键帧、遮罩和边框会保存在 `.wondershow` 项目中
+- 退出镜头编辑后，监视器会回到实时画中画状态，可继续彩排、重新录制或继续录制
+- 编辑模式优先使用干净的屏幕原始轨，并可显示/隐藏录制时的讲者画中画预览
+- 镜头工具条在编辑模式中常驻，可收起、展开，并在全屏幕范围拖动
+- 按 `ESC` 可取消当前镜头选区；如果该选区刚生成了自动关键帧，会一并回滚
+- 页脚「快捷键」可查看镜头编辑、撤销/重做、关键帧和片段导出的快捷键列表
+
 ### 🌐 三语界面
 内置简体中文、繁体中文、英文，运行时一键切换。
 
@@ -67,12 +89,12 @@
 
 ### 下载
 
-从 [Releases](https://github.com/aokest/WonderShow/releases/tag/v1.0.11) 页面下载：
+从 [Releases](https://github.com/aokest/WonderShow/releases/tag/v2.0.0) 页面下载：
 
 | 文件 | 说明 |
 |------|------|
-| `wondershow-community-1.0.11-*-macos.zip` | 社区版 macOS App（5.6MB） |
-| `wondershow-core-1.0.11-*.zip` | 开源 Core 包（Swift Package） |
+| `wondershow-community-2.0.0-*-macos.zip` | 社区版 macOS App |
+| `wondershow-core-2.0.0-*.zip` | 开源 Core 包（Swift Package） |
 
 ### 使用步骤
 
@@ -88,8 +110,14 @@
 
 | 快捷键 | 功能 |
 |--------|------|
-| `⌥⌘R` | 开始/停止录制 |
-| `⌘1` - `⌘6` | 快速切换录制源 |
+| `⌥⌘R` | 开始 / 停止录制 |
+| `⌘1` - `⌘6` | 录制中切换源位 |
+| `⌘Z` / `⇧⌘Z` | 撤销 / 重做镜头或片段操作 |
+| `⌘←` / `⌘→` | 上一帧 / 下一帧 |
+| `⌘N` | 新建镜头关键帧 |
+| `Delete` | 删除选中的关键帧或片段 |
+| `Return` | 播放 / 暂停镜头预览 |
+| `ESC` | 取消当前镜头选区，并回滚刚生成的自动关键帧 |
 
 ## 🏗️ 技术架构
 
@@ -123,7 +151,7 @@ WonderShow/
 ├── Sources/
 │   ├── WonderShow/              # 核心库（录制模型、项目格式）
 │   └── WonderShowApp/           # macOS App（Dashboard、录制、合成）
-├── Tests/                       # 单元测试（244+ 项）
+├── Tests/                       # 单元测试（349+ 项）
 ├── open-source/
 │   └── wondershow-core/         # 开源 Core Swift Package
 ├── scripts/                     # 构建和打包脚本
@@ -147,6 +175,19 @@ rtk bash scripts/build-app.sh
 rtk bash scripts/package-community-app.sh
 ```
 
+## 🤝 社区版包含
+
+灵演 2.0 社区版提供稳定、离线、可复现的创作者主链路：
+
+- 摄像头、屏幕/窗口、麦克风录制，保留 raw 轨和 `.wondershow` 项目
+- `⌘1` 到 `⌘6` 录制中切换源位
+- 屏幕主画面、讲者画中画、讲者主画面、分屏、纯屏幕、纯讲者等基础布局
+- 横屏、竖屏、方屏画布比例和录制中布局/画布变化回放
+- 录制后预览合成、MP4/MOV/GIF 导出、最高 4K 手动导出
+- 基础镜头编辑：矩形/圆形屏幕镜头选区、自动关键帧、标准遮罩、基础边框、撤销/重做、单片段和少量片段合并导出
+- 基础讲者画面调整：镜像、亮度、对比度和轻量柔化
+- 简体中文、繁体中文、英文三语界面
+
 ## 📖 开源项目适合谁
 
 - 想了解 `.wondershow` 项目格式的开发者
@@ -154,10 +195,12 @@ rtk bash scripts/package-community-app.sh
 - 想基于公开格式做内容归档和工作流集成的团队
 - 想学习 macOS 录制产品如何拆分应用体验与开放数据格式的独立开发者
 
+开源仓库包含 WonderShow Core、`.wondershow` 项目格式、MediaPipe sidecar 协议、插件 API、示例、测试，以及 `README`、`LICENSE`、`NOTICE`、`CONTRIBUTING`、`SECURITY`、`ROADMAP`、`PACKAGE_BOUNDARY` 和社区版三语说明。
+
 
 ## 💡 支持作者
 
-这个项目由 AI 辅助从零手搓，耗时 80+ 小时。如果灵演社区版对你有帮助，可以在 App 的「关于」页面扫码支持我一瓶可乐或一些 token ☕
+这个项目由 AI 辅助从零手搓，耗时 80+ 小时。如果灵演社区版对你有帮助，可以在 App 的「关于」页面扫码支持我一瓶可乐或一点支持 ☕
 
 也欢迎点赞、转发给需要的朋友！
 
